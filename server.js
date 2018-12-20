@@ -10,7 +10,7 @@ const urlExists = require("url-exists");
 const shortid = require("shortid");
 
 // Save site URL
-const projectUrl = "http://localhost:8080";
+const projectUrl = "https://shorturl.deployd.online";
 
 // Express.js server, with CORS enabled
 const app = express();
@@ -79,7 +79,7 @@ app.post("/api/shorturl/new", (req, res) => {
 app.get("/api/shorturl/:shorturl", (req, res) => {
   if (req.params.shorturl === "new") {
     res.redirect(projectUrl);
-  } else {
+  } else if (shortid.isValid(req.params.shorturl)) {
     ShortURL.findOne({ short_url_id: req.params.shorturl }, (err, data) => {
       if (err) return res.send(err);
       if (data) {
@@ -88,6 +88,8 @@ app.get("/api/shorturl/:shorturl", (req, res) => {
         res.json({ error: "URL not found in database" });
       }
     });
+  } else {
+    res.json({ error: "invalid ID format" });
   }
 });
 
