@@ -21,9 +21,6 @@
           <code>http(s)://www.example.com(/more/routes)</code> format, the JSON
           response will contain an error like
           <code>{"error":"invalid URL"}</code><br />
-          HINT: to be sure that the submitted url points to a valid site you can
-          use the function <code>dns.lookup(host, cb)</code> from the
-          <code>dns</code> core module.
         </li>
         <li>
           When I visit the shortened URL, it will redirect me to my original
@@ -47,11 +44,10 @@
         <input type="submit" value="POST URL" />
       </form>
       <h3>Example Usage:</h3>
-      <a href="https://thread-paper.hyperdev.space/api/shorturl/3">
-        [this_project_url]/api/shorturl/3
+      <a href="/api/shorturl/C-G_3x6YT">
+        [this_project_url]/api/shorturl/C-G_3x6YT
       </a>
-      <h3>Will Redirect to:</h3>
-      <p>https://forum.freecodecamp.com</p>
+      <p>Will redirect to: https://www.freecodecamp.com</p>
     </div>
     <footer>
       <hr />
